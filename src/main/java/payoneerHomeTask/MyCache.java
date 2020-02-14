@@ -19,8 +19,9 @@ class MyCache {
         .build(
             new CacheLoader<String, Message.Status>() {
               public Message.Status load(String id) { //after 25 minutes pull from db
-                final Message.Status status = Objects.isNull(inMemoryDb.get(id)) ?
-                    Message.Status.NotFound : inMemoryDb.get(id).getStatus();
+                Message msgFromMemory = inMemoryDb.get(id);
+                final Message.Status status = Objects.isNull(msgFromMemory) ?
+                    Message.Status.NotFound : msgFromMemory.getStatus();
                 return status;
               }
             }
@@ -35,7 +36,7 @@ class MyCache {
     return statusCache.get(msgId);
   }
 
-  void insertStatus(String msgId, Message.Status status) {
+  synchronized void insertStatus(String msgId, Message.Status status) {
     statusCache.put(msgId, status);
   }
 }
