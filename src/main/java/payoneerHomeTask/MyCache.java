@@ -36,7 +36,7 @@ class MyCache {
     return statusCache.get(msgId);
   }
 
-  synchronized void insertStatus(String msgId, Message.Status status) {
+  void insertStatus(String msgId, Message.Status status) {
     statusCache.put(msgId, status);
   }
 }
