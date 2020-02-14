@@ -7,15 +7,15 @@ import java.util.logging.Logger;
 
 public class Process extends TimerTask {
   private static InMemoryDB inMemoryDb;
-  private static Integer BULK_TO_PROCESS = 3;
+  private static Integer BULK_SIZE_TO_PROCESS = 3;
   private static final Logger logger = Logger.getLogger(Process.class.getName());
 
-  Process() {
+  public Process() {
     inMemoryDb = InMemoryDB.getInstance();
   }
 
   public void run() {
-    List<Message> msgsToProcess = inMemoryDb.queryBulkToProcess(BULK_TO_PROCESS);
+    List<Message> msgsToProcess = inMemoryDb.queryBulkToProcess(BULK_SIZE_TO_PROCESS);
     if (msgsToProcess.isEmpty()) {
       logger.info("there are no messages to process");
     }
@@ -27,7 +27,7 @@ public class Process extends TimerTask {
       } catch (InterruptedException e) {
         msgToProcess.setStatus(Message.Status.Error);
       }
-      inMemoryDb.insert(msgToProcess.id, msgToProcess);
+      inMemoryDb.insert(msgToProcess.getId(), msgToProcess);
     }
   }
 }

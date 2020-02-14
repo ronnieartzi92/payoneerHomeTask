@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 class InMemoryDB implements DBWrapper {
-  private ConcurrentHashMap<String, Message> messagesTable;
-  private static InMemoryDB inMemoryDb;
+  private final ConcurrentHashMap<String, Message> messagesTable;
+  private static final InMemoryDB inMemoryDb;
 
   private InMemoryDB() {
     messagesTable = new ConcurrentHashMap<>();
@@ -16,7 +16,7 @@ class InMemoryDB implements DBWrapper {
     inMemoryDb = new InMemoryDB();
   }
 
-  static InMemoryDB getInstance() {
+  public static InMemoryDB getInstance() {
     return inMemoryDb;
   }
 
@@ -24,15 +24,15 @@ class InMemoryDB implements DBWrapper {
     return messagesTable.get(id);
   }
 
-  public List<Message> queryBulkToProcess(int bulkNum) {
+  public List<Message> queryBulkToProcess(int bulkSize) {
     ArrayList<Message> msgsToProcess = new ArrayList<>();
     for (Message msg : messagesTable.values()) {
-      if (bulkNum == 0) {
+      if (bulkSize == 0) {
         return msgsToProcess;
       }
-      if (msg.status.equals(Message.Status.Accepted)) {
+      if (msg.getStatus().equals(Message.Status.Accepted)) {
         msgsToProcess.add(msg);
-        bulkNum--;
+        bulkSize--;
       }
     } return msgsToProcess;
   }

@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.logging.Logger;
 
 public class MyServer implements Runnable {
-  private static InMemoryDB inMemoryDb = InMemoryDB.getInstance();
+  private static final InMemoryDB inMemoryDb = InMemoryDB.getInstance();
   private static final Logger logger = Logger.getLogger(Process.class.getName());
 
   private void ingest(Context ctx) {
@@ -23,7 +23,7 @@ public class MyServer implements Runnable {
     PathTokens pathTokens = ctx.getPathTokens();
     String msgId = pathTokens.get("msgId");
     Message.Status status = Objects.isNull(inMemoryDb.get(msgId)) ?
-        Message.Status.NotFound : inMemoryDb.get(msgId).status;
+        Message.Status.NotFound : inMemoryDb.get(msgId).getStatus();
     ctx.getResponse().send(status.name());
   }
 

@@ -1,11 +1,11 @@
 package payoneerHomeTask;
 
 class Message {
-  String id;
-  String data;
-  Status status;
+  private String id;
+  private String data;
+  private Status status;
 
-  Message(String id, String data, Status status) {
+  public Message(String id, String data, Status status) {
     this.id = id;
     this.data = data;
     this.status = status;

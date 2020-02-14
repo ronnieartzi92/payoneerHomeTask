@@ -8,7 +8,7 @@ public interface DBWrapper {
    * This method will execute the query
    * "SELECT * FROM messages WHERE Status = "Accepted" limit" + bulkNum
    */
-  List<Message> queryBulkToProcess(int bulkNum);
+  List<Message> queryBulkToProcess(int bulkSize);
 
   /**
    * This method will execute the insert query
