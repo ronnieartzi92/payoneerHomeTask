@@ -15,10 +15,10 @@ class MyCache {
   private MyCache() {
     statusCache = CacheBuilder.newBuilder()
         .maximumSize(1000)
-        .expireAfterWrite(25, TimeUnit.MINUTES)
+        .expireAfterWrite(21, TimeUnit.MINUTES)
         .build(
             new CacheLoader<String, Message.Status>() {
-              public Message.Status load(String id) { //after 25 minutes pull from db
+              public Message.Status load(String id) { //after 21 minutes pull from db
                 Message msgFromMemory = inMemoryDb.get(id);
                 final Message.Status status = Objects.isNull(msgFromMemory) ?
                     Message.Status.NotFound : msgFromMemory.getStatus();
