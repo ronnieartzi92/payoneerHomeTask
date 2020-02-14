@@ -3,43 +3,27 @@ package payoneerHomeTask;
 import ratpack.handling.Context;
 import ratpack.path.PathTokens;
 import ratpack.server.RatpackServer;
-
-import java.util.Date;
 import java.util.Objects;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.logging.Logger;
 
 public class MyServer implements Runnable {
-  private static DBWrapper dbWrapper = DBWrapper.getInstance();
+  private static InMemoryDB inMemoryDb = InMemoryDB.getInstance();
+  private static final Logger logger = Logger.getLogger(Process.class.getName());
 
-  public static void main(String[] args) {
-    int coreCount = Runtime.getRuntime().availableProcessors();
-    ExecutorService pools = Executors.newFixedThreadPool(coreCount);
-    Runnable server = new MyServer();
-
-    TimerTask process = new payoneerHomeTask.Process();
-    Timer timer = new Timer();
-    timer.scheduleAtFixedRate(process, new Date(),1000);
-
-    pools.execute(server);
-  }
-
-  private static void handleMsg(Context ctx) {
+  private void ingest(Context ctx) {
     PathTokens pathTokens = ctx.getPathTokens();
     String msgId = pathTokens.get("msgId");
     String data = pathTokens.get("data");
-    DBWrapper.Message msg = new DBWrapper.Message(msgId, data, DBWrapper.Message.Status.Accepted);
-    dbWrapper.insert(msgId, msg);
+    Message msg = new Message(msgId, data, Message.Status.Accepted);
+    inMemoryDb.insert(msgId, msg);
     ctx.getResponse().send("thank you for your message");
   }
 
-  private static void getStatus(Context ctx) {
+  private void getStatus(Context ctx) {
     PathTokens pathTokens = ctx.getPathTokens();
     String msgId = pathTokens.get("msgId");
-    DBWrapper.Message.Status status = Objects.isNull(dbWrapper.get(msgId)) ?
-        DBWrapper.Message.Status.NotFound : dbWrapper.get(msgId).status;
+    Message.Status status = Objects.isNull(inMemoryDb.get(msgId)) ?
+        Message.Status.NotFound : inMemoryDb.get(msgId).status;
     ctx.getResponse().send(status.name());
   }
 
@@ -49,11 +33,12 @@ public class MyServer implements Runnable {
       RatpackServer.start(server -> server
           .handlers(chain -> chain
               .get(ctx -> ctx.render("Hey, which message would you like to process?"))
-              .get("ingestMsg/:msgId/:data", ctx -> ctx.byMethod(m -> m.get(() -> handleMsg(ctx))))
+              .get("ingestMsg/:msgId/:data", ctx -> ctx.byMethod(m -> m.get(() -> ingest(ctx))))
               .get("getStatus/:msgId", ctx -> ctx.byMethod(m -> m.get(() -> getStatus(ctx)))
               )
           ));
     } catch (Exception e) {
+      logger.info("Exception " + e + "running ratPackServer");
       e.printStackTrace();
     }
   }

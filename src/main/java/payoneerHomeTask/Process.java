@@ -1,33 +1,33 @@
 package payoneerHomeTask;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 public class Process extends TimerTask {
-  private static DBWrapper dbWrapper;
+  private static InMemoryDB inMemoryDb;
   private static Integer BULK_TO_PROCESS = 3;
   private static final Logger logger = Logger.getLogger(Process.class.getName());
 
   Process() {
-    dbWrapper = DBWrapper.getInstance();
+    inMemoryDb = InMemoryDB.getInstance();
   }
 
   public void run() {
-    ArrayList<DBWrapper.Message> msgsToProcess = dbWrapper.queryBulkToProcess(BULK_TO_PROCESS);
+    List<Message> msgsToProcess = inMemoryDb.queryBulkToProcess(BULK_TO_PROCESS);
     if (msgsToProcess.isEmpty()) {
-      logger.info("there is no messages to process");
+      logger.info("there are no messages to process");
     }
-    for (DBWrapper.Message msgToProcess : msgsToProcess) {
+    for (Message msgToProcess : msgsToProcess) {
       try {
         TimeUnit.SECONDS.sleep(3);
-        msgToProcess.setStatus(DBWrapper.Message.Status.Complete);
+        msgToProcess.setStatus(Message.Status.Complete);
         logger.info("just processed message id " + msgToProcess.getId());
       } catch (InterruptedException e) {
-        msgToProcess.setStatus(DBWrapper.Message.Status.Error);
+        msgToProcess.setStatus(Message.Status.Error);
       }
-      dbWrapper.insert(msgToProcess.id, msgToProcess);
+      inMemoryDb.insert(msgToProcess.id, msgToProcess);
     }
   }
 }
