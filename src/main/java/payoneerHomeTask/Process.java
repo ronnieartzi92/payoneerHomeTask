@@ -5,8 +5,9 @@ import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
-public class Process extends TimerTask {
+class Process extends TimerTask {
   private static InMemoryDB inMemoryDb;
+  private static final MyCache cache = MyCache.getInstance();
   private static Integer BULK_SIZE_TO_PROCESS = 3;
   private static final Logger logger = Logger.getLogger(Process.class.getName());
 
@@ -28,6 +29,7 @@ public class Process extends TimerTask {
         msgToProcess.setStatus(Message.Status.Error);
       }
       inMemoryDb.insert(msgToProcess.getId(), msgToProcess);
+      cache.insertStatus(msgToProcess.getId(), msgToProcess.getStatus());
     }
   }
 }

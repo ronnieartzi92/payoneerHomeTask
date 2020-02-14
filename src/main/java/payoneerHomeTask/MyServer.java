@@ -3,11 +3,12 @@ package payoneerHomeTask;
 import ratpack.handling.Context;
 import ratpack.path.PathTokens;
 import ratpack.server.RatpackServer;
-import java.util.Objects;
+import java.util.concurrent.ExecutionException;
 import java.util.logging.Logger;
 
-public class MyServer implements Runnable {
+class MyServer implements Runnable {
   private static final InMemoryDB inMemoryDb = InMemoryDB.getInstance();
+  private static final MyCache cache = MyCache.getInstance();
   private static final Logger logger = Logger.getLogger(Process.class.getName());
 
   private void ingest(Context ctx) {
@@ -16,14 +17,14 @@ public class MyServer implements Runnable {
     String data = pathTokens.get("data");
     Message msg = new Message(msgId, data, Message.Status.Accepted);
     inMemoryDb.insert(msgId, msg);
+    cache.insertStatus(msgId, msg.getStatus());
     ctx.getResponse().send("thank you for your message");
   }
 
-  private void getStatus(Context ctx) {
+  private void getStatus(Context ctx) throws ExecutionException {
     PathTokens pathTokens = ctx.getPathTokens();
     String msgId = pathTokens.get("msgId");
-    Message.Status status = Objects.isNull(inMemoryDb.get(msgId)) ?
-        Message.Status.NotFound : inMemoryDb.get(msgId).getStatus();
+    Message.Status status = cache.getStatus(msgId);
     ctx.getResponse().send(status.name());
   }
 
