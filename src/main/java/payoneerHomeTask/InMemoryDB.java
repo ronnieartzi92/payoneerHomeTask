@@ -6,14 +6,10 @@ import java.util.concurrent.ConcurrentHashMap;
 
 class InMemoryDB implements DBWrapper {
   private final ConcurrentHashMap<String, Message> messagesTable;
-  private static final InMemoryDB inMemoryDb;
+  private static final InMemoryDB inMemoryDb = new InMemoryDB();
 
   private InMemoryDB() {
     messagesTable = new ConcurrentHashMap<>();
-  }
-
-  static {
-    inMemoryDb = new InMemoryDB();
   }
 
   public static InMemoryDB getInstance() {

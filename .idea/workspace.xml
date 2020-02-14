@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bcc36de1-5ffa-4b25-9513-d15dd21dd461" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/payoneerHomeTask/InMemoryDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/payoneerHomeTask/InMemoryDB.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/payoneerHomeTask/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/payoneerHomeTask/Message.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/payoneerHomeTask/MyServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/payoneerHomeTask/MyServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/payoneerHomeTask/Process.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/payoneerHomeTask/Process.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/payoneerHomeTask/DBWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/payoneerHomeTask/DBWrapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/payoneerHomeTask/InMemoryDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/payoneerHomeTask/InMemoryDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/payoneerHomeTask/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/payoneerHomeTask/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/payoneerHomeTask/MyServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/payoneerHomeTask/MyServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/payoneerHomeTask/Process.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/payoneerHomeTask/Process.java" afterDir="false" />
-    </list>
+    <list default="true" id="bcc36de1-5ffa-4b25-9513-d15dd21dd461" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -30,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="InMemoryDB.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="InMemoryDB.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/payoneerHomeTask/InMemoryDB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="20" column="3" lean-forward="true" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
+            <state relative-caret-position="247">
+              <caret line="15" column="17" lean-forward="true" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1028#1029#0" expanded="true" />
@@ -46,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/payoneerHomeTask/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="16" column="7" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+            <state relative-caret-position="418">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -689,12 +678,12 @@
       <updated>1581520696202</updated>
       <workItem from="1581520698836" duration="7446000" />
       <workItem from="1581528518957" duration="5144000" />
-      <workItem from="1581544160540" duration="9839000" />
+      <workItem from="1581544160540" duration="10220000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22429000" />
+    <option name="totallyTimeSpent" value="22810000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="200" y="23" width="1541" height="929" extended-state="0" />
@@ -714,7 +703,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.00466978" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13342229" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" id="Gradle" order="3" />
@@ -963,20 +952,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/payoneerHomeTask/InMemoryDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="20" column="3" lean-forward="true" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1028#1029#0" expanded="true" />
-            <element signature="e#1054#1055#0" expanded="true" />
-            <element signature="e#1089#1090#0" expanded="true" />
-            <element signature="e#1123#1124#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/payoneerHomeTask/MyServer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
@@ -999,10 +974,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/payoneerHomeTask/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="7" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+        <state relative-caret-position="418">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/payoneerHomeTask/InMemoryDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="15" column="17" lean-forward="true" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1028#1029#0" expanded="true" />
+            <element signature="e#1054#1055#0" expanded="true" />
+            <element signature="e#1089#1090#0" expanded="true" />
+            <element signature="e#1123#1124#0" expanded="true" />
           </folding>
         </state>
       </provider>
